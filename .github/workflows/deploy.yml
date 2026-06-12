@@ -24,19 +24,16 @@ jobs:
         with:
           node-version: 20
           cache: npm
-          cache-dependency-path: my-react-app/package-lock.json
 
       - name: 의존성 설치
         run: npm ci
-        working-directory: my-react-app
 
       - name: 빌드
         run: npm run build
-        working-directory: my-react-app
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: my-react-app/dist
+          path: dist
 
   deploy:
     needs: build
